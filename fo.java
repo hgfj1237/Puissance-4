@@ -44,16 +44,23 @@ public class fo {
 
     // Méthode pour gérer le tour d'un joueur
     public static void jouerTour(Scanner scanner, char[][] grille, String joueur, char jeton) {
-        int col;
-        do {
+        String col;
+        int _col;
+        try 
+		{ 
+            do {
             System.out.println(joueur + ", choisissez une colonne (1-7) :");
-            col = scanner.nextInt();
-            if((int)col != col){
-                
-            }
-        } while (col < 1 || col > 7 || !colonneValide(grille, col - 1));
+            col = scanner.next();
+            _col = Integer.parseInt(col);
+            } while (((int)_col == _col) && (_col < 1 || _col > 7 || !colonneValide(grille, _col - 1)));
+            jouerCoup(grille, _col - 1, jeton); // col - 1 car l'index commence à 0
+		}  
+		catch (NumberFormatException e)  
+		{ 
+			System.out.println(" is not a valid integer"); 
+		} 
+        
 
-        jouerCoup(grille, col - 1, jeton); // col - 1 car l'index commence à 0
     }
 
     // Vérifie si on peut jouer dans la colonne choisie
