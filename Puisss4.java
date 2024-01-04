@@ -14,24 +14,32 @@ public class Puisss4 {
             System.out.println("4. Quitter");
             System.out.print("Choisissez une option (1-4): ");
 
-            int choix = scanner.nextInt();
-
-            switch (choix) {
-                case 1:
-                    fo.regledejeu();
-                    break;
-                case 2:
-                    fo.jouerPuissance4SansRobot();
-                    break;
-                case 3:
-                    // jouerPuissance4AvecRobot(); // À implémenter
-                    break;
-                case 4:
-                    System.out.println("Au revoir !");
-                    return; // Utilisez return pour sortir du programme
-                default:
-                    System.out.println("Veuillez choisir une option valide.");
+            String choix = scanner.next();
+            int _choix;
+            try{
+                _choix = Integer.parseInt(choix);
+                switch (_choix) {
+                    case 1:
+                        fo.regledejeu();
+                        break;
+                    case 2:
+                        fo.jouerPuissance4SansRobot();
+                        break;
+                    case 3:
+                        // jouerPuissance4AvecRobot(); // À implémenter
+                        break;
+                    case 4:
+                        System.out.println("Au revoir !");
+                        return; // Utilisez return pour sortir du programme
+                    default:
+                        System.out.println("Veuillez choisir une option valide.");
+                }
+            }catch (NumberFormatException e)  
+            { 
+                System.out.println("Choisissez un chiffre (1-4) :"); 
             }
+
+            
         }
     }
 }
