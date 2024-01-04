@@ -48,6 +48,9 @@ public class fo {
         do {
             System.out.println(joueur + ", choisissez une colonne (1-7) :");
             col = scanner.nextInt();
+            if((int)col != col){
+                
+            }
         } while (col < 1 || col > 7 || !colonneValide(grille, col - 1));
 
         jouerCoup(grille, col - 1, jeton); // col - 1 car l'index commence à 0
