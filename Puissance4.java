@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Puisss4 {
+public class Puissance4 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -20,13 +20,13 @@ public class Puisss4 {
                 _choix = Integer.parseInt(choix);
                 switch (_choix) {
                     case 1:
-                        fo.regledejeu();
+                        Divers.regledejeu();
                         break;
                     case 2:
-                        fo.jouerPuissance4SansRobot();
+                        Puissance4SansRobot.jouerPuissance4SansRobot();
                         break;
                     case 3:
-                        // jouerPuissance4AvecRobot(); // À implémenter
+                        Puissance4AvecRobot.jouerPuissance4AvecRobot(); // À implémenter
                         break;
                     case 4:
                         System.out.println("Au revoir !");
