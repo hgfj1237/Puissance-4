@@ -57,7 +57,7 @@ public class fo {
 		}  
 		catch (NumberFormatException e)  
 		{ 
-			System.out.println(" is not a valid integer"); 
+			System.out.println("Choisissez un chiffre (1-7) :"); 
 		} 
         
 
