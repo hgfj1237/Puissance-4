@@ -24,26 +24,38 @@ public class fo {
         initGrille(grille);
         boolean finDuJeu = false;
         while (!finDuJeu) {
+            Boolean tour = true;
+            
             // Tour du joueur 1
-            jouerTour(scanner, grille, joueur1, 'X'); // Utiliser des caractères pour représenter les jetons
-            afficherGrille(grille);
-            if (verifierVictoire(grille, 'X')) {
-                System.out.println(joueur1 + " a gagné !");
-                break;
-            }
+            do{
+                tour = jouerTour(scanner, grille, joueur1, 'X'); // Utiliser des caractères pour représenter les jetons
+                if(tour){
+                    afficherGrille(grille);
+                }
+                if (verifierVictoire(grille, 'X')) {
+                    System.out.println(joueur1 + " a gagné !");
+                    break;
+                }
+            }while(!tour);
+            
 
             // Tour du joueur 2
-            jouerTour(scanner, grille, joueur2, 'O');
-            afficherGrille(grille);
-            if (verifierVictoire(grille, 'O')) {
-                System.out.println(joueur2 + " a gagné !");
-                break;
-            }
+            do{
+                tour = jouerTour(scanner, grille, joueur2, 'O');
+                                if(tour){
+                    afficherGrille(grille);
+                }
+                if (verifierVictoire(grille, 'O')) {
+                    System.out.println(joueur2 + " a gagné !");
+                    break;
+                }
+            }while(!tour);
+            
         }
     }
 
     // Méthode pour gérer le tour d'un joueur
-    public static void jouerTour(Scanner scanner, char[][] grille, String joueur, char jeton) {
+    public static boolean jouerTour(Scanner scanner, char[][] grille, String joueur, char jeton) {
         String col;
         int _col;
         try 
@@ -52,15 +64,16 @@ public class fo {
             System.out.println(joueur + ", choisissez une colonne (1-7) :");
             col = scanner.next();
             _col = Integer.parseInt(col);
-            } while (((int)_col == _col) && (_col < 1 || _col > 7 || !colonneValide(grille, _col - 1)));
+            } while ((_col < 1 || _col > 7 || !colonneValide(grille, _col - 1)));
+
             jouerCoup(grille, _col - 1, jeton); // col - 1 car l'index commence à 0
+            return colonneValide(grille, _col - 1);
 		}  
 		catch (NumberFormatException e)  
 		{ 
 			System.out.println("Choisissez un chiffre (1-7) :"); 
 		} 
-        
-
+        return false;
     }
 
     // Vérifie si on peut jouer dans la colonne choisie
